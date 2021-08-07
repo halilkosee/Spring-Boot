@@ -21,7 +21,7 @@ public class StudentController {
         return studentService.getStudents();
     }
     @PostMapping
-    public void registerNewStudent(@RequestBody Student student){
+    public void registerNewStudent(@RequestBody Student student) throws IllegalAccessException {
         studentService.addNewStudent(student);
     }
 }

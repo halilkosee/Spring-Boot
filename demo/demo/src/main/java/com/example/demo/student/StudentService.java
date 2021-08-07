@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentService {
@@ -20,8 +21,12 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-    public void addNewStudent(Student student) {
-        System.out.println(student);
-
+    public void addNewStudent(Student student) throws IllegalAccessException {
+        Optional<Student> studentOptional = studentRepository
+                .findStudentByEmail(student.getEmail());
+        if (studentOptional.isPresent()){
+            throw new IllegalAccessException("email taken");
+        }
+        studentRepository.save(student);
     }
 }
