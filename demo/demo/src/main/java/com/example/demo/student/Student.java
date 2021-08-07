@@ -1,5 +1,7 @@
 package com.example.demo.student;
 
+import jdk.jfr.Name;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -16,8 +18,8 @@ public class Student {
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
             generator = "student_sequence"
-
     )
+
     private long id;
     private String name;
     private String email;
